@@ -1,8 +1,5 @@
-import express from 'express'
+import app from './app';
 
-const PORT = 3000;
-const app = express();
+const { PORT = 3000 } = process.env;
 
-app.all('*', (req, res) => res.send('Henlo stinky lizar'))
-
-app.listen(PORT, () => `listening at port: ${PORT}`);
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`)); // eslint-disable-line
