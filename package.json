@@ -8,7 +8,7 @@
     "start:dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d dist",
     "test": "jest",
-    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls"
   },
   "repository": {
     "type": "git",
