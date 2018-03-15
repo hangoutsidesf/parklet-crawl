@@ -14,5 +14,6 @@ COPY . .
 # expose container port to localhost
 EXPOSE 3000
 
+RUN npm run build
 # start script
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "start"]
