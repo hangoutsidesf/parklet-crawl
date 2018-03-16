@@ -5,6 +5,7 @@ export default class Yelp {
   constructor() {
     this.BASE_URL = 'https://api.yelp.com/v3/businesses/';
   }
+
   /**
    * Returns more detailed information about a specific business.
    * @param {string} id - The Yelp ID of business.
