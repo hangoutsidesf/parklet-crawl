@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// const callAPI = () => axios.get('https://data.sfgov.org/resource/6a7x-cttf.json');
-
-
 const BASE_URL = 'https://api.yelp.com/v3/businesses/';
 
 async function searchById(id) {
