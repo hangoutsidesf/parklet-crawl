@@ -16,7 +16,7 @@ export async function getParklets() {
 /**
  * Prunes a parklet object and returns new object with only required keys.
  * @param {object} parklet - Individual parklet object with many keys.
- * @constant {array} keys - A list of keys on each blob that are required.
+ * @constant {array} desiredKeys - A list of keys on each blob that are required.
  * @returns {object} - New object with only defined keys.
  */
 export function parseParklet(parklet) {
