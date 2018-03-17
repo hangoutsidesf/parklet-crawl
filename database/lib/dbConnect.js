@@ -15,3 +15,5 @@ function connectWithRetry(count = 0) {
 }
 
 connectWithRetry();
+
+export default connectWithRetry;
