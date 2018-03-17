@@ -22,19 +22,21 @@ export async function searchById(id) {
  * Returns general information about a specific business.
  * @async
  * @param {string} name - The name of business.
- * @return {Promise} resolve = businessInformation - General business information.
+ * @return {Promise} resolve = data - General business information.
  */
 export async function searchForBusiness(name) {
-  const businessInformation = await axios.get(`${BASE_URL}matches/best`, {
+  const { data } = await axios.get(`${BASE_URL}search`, {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`,
     },
     params: {
-      name,
-      city: 'San Francisco',
-      state: 'CA',
-      country: 'US',
+      term: name,
+      location: {
+        city: 'San Francisco',
+        state: 'CA',
+        country: 'US',
+      },
     },
   });
-  return businessInformation;
+  return data.businesses[0];
 }
