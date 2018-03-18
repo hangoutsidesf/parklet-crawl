@@ -7,15 +7,15 @@ const BASE_URL = 'https://api.yelp.com/v3/businesses/';
  * @async
  * @param {string} id - The Yelp ID of business.
  * @constant {string} BASE_URL - The base url of the Yelp API.
- * @return {Promise} resolve = businessInformation - Detailed business information.
+ * @return {Promise} resolve = data - Detailed business information.
  */
 export async function searchById(id) {
-  const businessInformation = await axios.get(BASE_URL + id, {
+  const { data } = await axios.get(BASE_URL + id, {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`,
     },
   });
-  return businessInformation;
+  return data;
 }
 
 /**
