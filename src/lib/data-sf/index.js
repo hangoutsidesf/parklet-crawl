@@ -6,6 +6,7 @@ const fetchParklets = () => axios.get('https://data.sfgov.org/resource/6a7x-cttf
 
 /**
  * Returns a blob of parklet data.
+ * @async
  * @returns {object[]} data - A list of each parklet in SF.
 */
 async function getParklets() {
