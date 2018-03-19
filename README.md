@@ -6,8 +6,16 @@
 ## Usage
 
 ### Development
+#### Localhost
 1. install dependencies (`npm install`)
 2. start server in development mode (`npm run start:dev`)
+
+#### Container
+1. `npm run deploy:develop` will build and run latest local changes in dev mode
+2. `npm run deploy:staging` will build and run latest local changes in staging mode
+3. `docker-compose stop` will down crawler container
+
+
 
 ### Production
 1. Clone the repo
@@ -17,20 +25,9 @@ git clone https://github.com/hangoutsidesf/parklet-crawl.git crawler
 cd crawler
 ```
 
-2. Install Dependencies
-```
-npm install
-```
-
-3. Build
-```
-npm run build
-```
-> will compile src to /dist
-
-4. Collect Data
-```
-npm start
+2. Start Production Container
+```bash
+npm run deploy:prod
 ```
 
 ## TODO

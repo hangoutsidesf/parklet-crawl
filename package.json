@@ -8,7 +8,10 @@
     "start:dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d dist",
     "test": "jest",
-    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls"
+    "coverage": "npx jest --coverage && cat ./coverage/lcov.info | npx coveralls",
+    "deploy:dev": "NODE_ENV=development docker-compose up --build",
+    "deploy:staging": "NODE_ENV=staging docker-compose up --build",
+    "deploy:prod": "NODE_ENV=production docker-compose up --build"
   },
   "repository": {
     "type": "git",
