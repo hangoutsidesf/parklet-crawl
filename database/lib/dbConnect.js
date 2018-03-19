@@ -8,12 +8,14 @@ function connectWithRetry(count = 0) {
         throw Error('failed to reconnect to mongo after 3 attempts');
       }
       count += 1; // eslint-disable-line no-param-reassign
-      console.error('failed to connect on first attempt, attempting to reconnect');
+      console.error('failed to connect to mongo, attempting to reconnect');
       setTimeout(connectWithRetry.bind(null, count), 2000);
     }
   });
 }
 
-connectWithRetry();
+// if (process.env.NODE_ENV !== 'test') {
+//   connectWithRetry();
+// }
 
 export default connectWithRetry;
