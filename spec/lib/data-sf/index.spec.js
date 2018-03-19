@@ -9,7 +9,7 @@ describe('Data SF', () => {
 
   describe('#parseParklet()', () => {
     test('Should prune unecessary keys from parklet obj', () => {
-      const index = Math.floor(Math.random() * 31 ); // Pick a random parklet from the list.
+      const index = Math.floor(Math.random() * 31); // Pick a random parklet from the list.
       return getParklets()
         .then(data => data[index])
         .then(parklet => parseParklet(parklet))
