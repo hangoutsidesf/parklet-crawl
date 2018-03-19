@@ -7,8 +7,8 @@ const headers = { Authorization: `Bearer ${process.env.YELP_API_KEY}` };
  * Creates a Location for a specific place by city, state, country; Defaults to San Francicso, CA.
  * @class
  * @param {string=} [city=San Francisco] - The city of the location.
- * @param {string=} [stateCode=CA] - The ISO state code of the location.
- * @param {string=} [countryCode=US] - The ISO country code of the location.
+ * @param {string=} [stateCode=CA] - The ISO 3166-2 state code of the location.
+ * @param {string=} [countryCode=US] - The ISO 3166-1 alpha-2 country code of the location.
 */
 class Location {
   constructor(city = 'San Francisco', stateCode = 'CA', countryCode = 'US') {
