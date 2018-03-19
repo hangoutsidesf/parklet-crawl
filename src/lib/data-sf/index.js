@@ -6,11 +6,11 @@ const fetchParklets = () => axios.get('https://data.sfgov.org/resource/6a7x-cttf
 
 /**
  * Returns a blob of parklet data.
- * @returns {object[]} payload - A list of each parklet in SF.
+ * @returns {object[]} data - A list of each parklet in SF.
 */
-export async function getParklets() {
-  const payload = await fetchParklets();
-  return payload;
+async function getParklets() {
+  const { data } = await fetchParklets();
+  return data;
 }
 
 /**
@@ -19,7 +19,7 @@ export async function getParklets() {
  * @constant {array} desiredKeys - A list of keys on each blob that are required.
  * @returns {object} - New object with only defined keys.
  */
-export function parseParklet(parklet) {
+function parseParklet(parklet) {
   const desiredKeys = [
     'applicant',
     'cross_street_1',
@@ -31,3 +31,8 @@ export function parseParklet(parklet) {
   ];
   return pick(parklet, desiredKeys);
 }
+
+export {
+  getParklets,
+  parseParklet,
+};
