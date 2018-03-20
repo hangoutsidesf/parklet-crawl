@@ -15,6 +15,7 @@ class Location {
     this.city = city;
     this.stateCode = stateCode;
     this.countryCode = countryCode;
+    console.log('I am a new location', stateCode);
   }
 }
 
@@ -37,7 +38,7 @@ async function searchById(id) {
  * @param {Location=} location - The location of business.
  * @return {Promise} resolve = data - General business information.
  */
-async function searchForBusiness(term, location = new Location()) {
+async function searchForBusiness(term, location = () => new Location()) {
   const { data } = await axios.get(`${BASE_URL}search`, {
     headers,
     params: { term, location },
