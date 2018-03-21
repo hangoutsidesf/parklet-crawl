@@ -1,6 +1,8 @@
-import { Schema, Model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const parkletSchema = new Schema({
+const { Schema } = mongoose;
+
+const parkletSchema = Schema({
   name: String,
   hours: {
     monday: [Number],
@@ -27,10 +29,10 @@ const parkletSchema = new Schema({
     has_coffee: Boolean,
   },
   views: Number,
-  photos: [URL],
+  photos: [String],
   rating: Number,
 });
 
-const Parklet = Model('Parklet', parkletSchema);
+const Parklet = mongoose.model('Parklet', parkletSchema);
 
 export default Parklet;
