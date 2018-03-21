@@ -1,6 +1,6 @@
-import { Schema } from 'mongoose';
+import { Schema, Model } from 'mongoose';
 
-const Parklet = new Schema({
+const parkletSchema = new Schema({
   name: String,
   hours: {
     monday: [Number],
@@ -30,5 +30,7 @@ const Parklet = new Schema({
   photos: [URL],
   rating: Number,
 });
+
+const Parklet = Model('Parklet', parkletSchema);
 
 export default Parklet;
