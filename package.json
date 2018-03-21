@@ -51,7 +51,8 @@
       "!dist/**",
       "!.eslintrc.js",
       "!coverage/**",
-      "!src/index.js"
+      "!src/index.js",
+      "!src/models/**"
     ]
   }
 }
