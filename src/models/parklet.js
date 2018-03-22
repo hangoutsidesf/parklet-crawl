@@ -31,6 +31,11 @@ const parkletSchema = Schema({
   views: Number,
   photos: [String],
   rating: Number,
+  prices: {
+    type: Number,
+    min: 1,
+    max: 4,
+  },
 });
 
 const Parklet = mongoose.model('Parklet', parkletSchema);
