@@ -15,7 +15,6 @@ class Location {
     this.city = city;
     this.stateCode = stateCode;
     this.countryCode = countryCode;
-    console.log('I am a new location', stateCode);
   }
 }
 
