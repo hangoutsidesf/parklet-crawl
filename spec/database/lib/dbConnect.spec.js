@@ -12,7 +12,7 @@ describe('Should not attempt to connect to database during testing', () => {
   afterEach(() => {
     jest.resetModules()
   });
-  
+
   test('should not invoke callback when env is test', () => {
     process.env.NODE_ENV = 'test';
     const mockFn = jest.fn();
