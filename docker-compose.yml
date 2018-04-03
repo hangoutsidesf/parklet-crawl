@@ -1,0 +1,19 @@
+version: "3"
+services: 
+  crawler:
+    container_name: crawler
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - NODE_ENV=${NODE_ENV}
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
