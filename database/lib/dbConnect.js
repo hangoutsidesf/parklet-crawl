@@ -1,21 +1,24 @@
 import {} from 'dotenv/config';
 import mongoose from 'mongoose';
 
-function connectWithRetry(count = 0) {
-  mongoose.connect(process.env.MONGO_URL, (err) => {
-    if (err) {
-      if (count === 3) {
-        throw Error('failed to reconnect to mongo after 3 attempts');
-      }
-      count += 1; // eslint-disable-line no-param-reassign
-      console.error('failed to connect to mongo, attempting to reconnect');
-      setTimeout(connectWithRetry.bind(null, count), 2000);
+async function connectWithRetry(numRetries = 3) {
+  for (let i = 1; i <= numRetries; i += 1) {
+    try {
+      await mongoose.connect(process.env.MONGO_URL); // eslint-disable-line no-await-in-loop
+      break;
+    } catch (error) {
+      if (i === numRetries) throw Error("couldn't connect to db", error);
     }
-  });
+  }
 }
 
-// if (process.env.NODE_ENV !== 'test') {
-//   connectWithRetry();
-// }
+function connectToMongo(cb) {
+  if (process.env.NODE_ENV !== 'test') {
+    connectWithRetry();
+    if (cb) cb();
+  }
+}
 
-export default connectWithRetry;
+connectToMongo();
+
+export { connectWithRetry, connectToMongo };
