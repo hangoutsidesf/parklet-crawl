@@ -4,13 +4,13 @@ describe('gracefully attempt reconnection to mongo client on first connection', 
   test('should throw an error after three attempts to connect', () => {
     connectWithRetry(1).catch((err) => {
       expect(err).toBeDefined();
-    })
+    });
   });
 });
 
 describe('Should not attempt to connect to database during testing', () => {
   afterEach(() => {
-    jest.resetModules()
+    jest.resetModules();
   });
 
   test('should not invoke callback when env is test', () => {
