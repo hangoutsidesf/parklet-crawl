@@ -1,25 +1,28 @@
-import connectWithRetry from '../../../database/lib/dbConnect';
+import { connectWithRetry, connectToMongo } from '../../../database/lib/dbConnect';
 
-// jest.dontMock('mongoose');
-// jest.dontMock('mquery')
-// jest.enableAutomock();
-
-describe('gracefull attempt reconnection to mongo client', () => {
-  test('should attempt to reconnect up to 3 times', () => {
-    expect(connectWithRetry).toThrow();
+describe('gracefully attempt reconnection to mongo client on first connection', () => {
+  test('should throw an error after three attempts to connect', () => {
+    connectWithRetry(1).catch((err) => {
+      expect(err).toBeDefined();
+    })
   });
 });
 
-// let connectWithRetry = jest.genMockFromModule('../../../database/lib/dbConnect');
-// connectWithRetry = jest.fn();
-// jest.useFakeTimers();
-
-// describe('connectWithRetry', () => {
-//   test('should attempt to connect 3 times', () => {
-//     connectWithRetry();
-//     expect(connectWithRetry).toHaveBeenCalledTimes(1);
-//     jest.runOnlyPendingTimers();
-
-//     expect(connectWithRetry).toHaveBeenCalledTimes(2);
-//   });
-// });
+describe('Should not attempt to connect to database during testing', () => {
+  afterEach(() => {
+    jest.resetModules()
+  });
+  
+  test('should not invoke callback when env is test', () => {
+    process.env.NODE_ENV = 'test';
+    const mockFn = jest.fn();
+    connectToMongo(mockFn);
+    expect(mockFn).toHaveBeenCalledTimes(0);
+  });
+  test('should invoke callback when env is not test', () => {
+    process.env.NODE_ENV = 'development';
+    const mockFn = jest.fn();
+    connectToMongo(mockFn);
+    expect(mockFn).toHaveBeenCalled();
+  });
+});
