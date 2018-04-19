@@ -1,6 +1,6 @@
 import request from 'supertest';
 
-import app from '../src/app';
+import app from '../../src/app';
 
 describe('Integration tests for App', () => {
   test('Should respond to get with status code 200', () => (
